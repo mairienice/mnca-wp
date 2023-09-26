@@ -1,0 +1,36 @@
+{
+  "name": "mnca/wp",
+  "description": "Help create WordPress websites for MNCA.",
+  "type": "wordpress-plugin",
+  "license": "GPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "MNCA",
+      "email": "web@nicecotedazur.org"
+    }
+  ],
+  "repositories": [
+    {
+      "type":"composer",
+      "url":"https://connect.advancedcustomfields.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "autoload": {
+    "classmap": [
+      "includes/"
+    ],
+    "psr-4": {
+      "MNCA_WP\\": "includes/"
+    }
+  },
+  "require-dev": {
+    "johnpbloch/wordpress-core": "6.1.*",
+    "wpengine/advanced-custom-fields-pro": "*"
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": false
+    }
+  }
+}
