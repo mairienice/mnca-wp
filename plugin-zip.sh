@@ -10,7 +10,7 @@ fi
 zip -r $FILE . -x@.distignore -q
 
 if [ -d "./vendor/composer" ]; then
-	zip -r $FILE vendor/composer vendor/autoload.php -q
+	zip -r $FILE vendor/composer vendor/autoload.php -x "*installers*" -q
 fi
 
 echo "Plugin zip $FILE created !"
