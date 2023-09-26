@@ -33,4 +33,4 @@ msgstr "MNCA"
 
 #: includes/search/search.php:323
 msgid "Filtering"
-msgstr "Filtrer"
+msgstr "Valider les filtres"
