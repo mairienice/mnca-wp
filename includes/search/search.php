@@ -320,7 +320,7 @@ function mnca_search_select_acf_relationship(
 function mnca_search_input_submit( array $args = array() ) {
 	global $template_loader;
 	$defaults = array(
-		'value' => __( 'Filtering', 'crr-search-courses' ),
+		'value' => __( 'Filtering', 'mnca-wp' ),
 	);
 	$args     = wp_parse_args( $args, $defaults );
 

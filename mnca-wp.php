@@ -29,6 +29,7 @@ define( 'MNCA_WP', true );
 define( 'MNCA_WP_VERSION', '1.0.0' );
 define( 'MNCA_WP_PATH', plugin_dir_path( __FILE__ ) );
 define( 'MNCA_WP_BASENAME', plugin_basename( __FILE__ ) );
+define( 'MNCA_WP_REL_PATH', dirname( MNCA_WP_BASENAME ) );
 define( 'MNCA_WP_INC_PATH', realpath( MNCA_WP_PATH . 'includes/' ) . '/' );
 
 // Load utility functions
@@ -38,3 +39,13 @@ require_once( MNCA_WP_INC_PATH . 'utility.php' );
 if ( file_exists( MNCA_WP_PATH . 'vendor/autoload.php' ) ) {
 	require MNCA_WP_PATH . 'vendor/autoload.php';
 }
+
+// Load translations.
+if ( ! is_admin() ) {
+	load_plugin_textdomain(
+		'mnca-wp',
+		false,
+		MNCA_WP_REL_PATH . '/languages/'
+	);
+}
+
