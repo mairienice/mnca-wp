@@ -61,6 +61,11 @@ function mnca_search_custom_query( WP_Query $query ) {
 
 	if ( isset( $_REQUEST['_search'] ) ) {
 
+		if(count($_REQUEST) === 1) {
+			wp_redirect( Request_Helper::get_current_page_url() );
+			exit;
+		}
+
 		if ( ! wp_verify_nonce( wp_unslash( $_REQUEST['_search'] ), 'mnca-search' ) ) {
 			wp_nonce_ays( 'mnca-search' );
 		}
