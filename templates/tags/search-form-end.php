@@ -18,6 +18,7 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 
 <script>
 	document.querySelectorAll(".form--search").forEach(function (form) {
+
 		form.addEventListener("submit", function (event) {
 			event.preventDefault();
 
@@ -25,11 +26,16 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 			let formFields = form.querySelectorAll("select");
 			let sendForm = false;
 			const formData = new FormData(form);
+			const urlParams = Array.from(new URLSearchParams(window.location.search));
 
-			for (const pair of formData.entries()) {
-				if (pair[0] !== '_search' && pair[1] !== '-1') {
-					sendForm = true;
+			if (urlParams.length === 0) {
+				for (const pair of formData.entries()) {
+					if (pair[0] !== '_search' && pair[1] !== '-1') {
+						sendForm = true;
+					}
 				}
+			} else {
+				sendForm = true;
 			}
 
 			if (sendForm) {
@@ -41,5 +47,6 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 				form.submit();
 			}
 		});
+
 	})
 </script>
