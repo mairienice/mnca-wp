@@ -24,6 +24,9 @@
       "MNCA_WP\\": "includes/"
     }
   },
+  "require": {
+    "php": ">=7.4"
+  },
   "require-dev": {
     "johnpbloch/wordpress-core": "6.1.*",
     "wpengine/advanced-custom-fields-pro": "*"
