@@ -54,4 +54,17 @@ class Request_Helper {
 
 		return home_url( add_query_arg( array(), $wp->request ) );
 	}
+
+	/**
+	 * Retrieve the URL of the current pag with query strings.
+	 *
+	 * @return string|null URL of the current page with query strings. Otherwise, null.
+	 *
+	 * @global \WP $wp Current WordPress environment instance.
+	 */
+	public static function get_current_page_full_url(): ?string {
+		global $wp;
+
+		return home_url( add_query_arg( $wp->query_vars, $wp->request ) );
+	}
 }
