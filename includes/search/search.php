@@ -24,10 +24,11 @@ $template_loader = new MNCA_WP\Template_Loader();
  *
  * Callback of filter hook 'query_vars' (cf. {@see WP::parse_request()}).
  *
+ * @since 1.0.0
+ *
  * @param string[] $vars The array of allowed query variable names.
  *
  * @return string[] The filtered array of allowed query variable names.
- * @since 1.0.0
  */
 function mnca_search_query_vars( array $vars ): array {
 
@@ -48,10 +49,11 @@ add_filter( 'query_vars', 'mnca_search_query_vars' );
  *
  * Callback function of hook action 'pre_get_posts' (cf. {@see WP_Query::get_posts()}).
  *
+ * @since   1.0.0
+ *
  * @param WP_Query $query The main query.
  *
  * @return  void
- * @since   1.0.0
  */
 function mnca_search_custom_query( WP_Query $query ) {
 
@@ -61,7 +63,7 @@ function mnca_search_custom_query( WP_Query $query ) {
 
 	if ( isset( $_REQUEST['_search'] ) ) {
 
-		if(count($_REQUEST) === 1) {
+		if ( count( $_REQUEST ) === 1 ) {
 			wp_redirect( Request_Helper::get_current_page_url() );
 			exit;
 		}
@@ -73,7 +75,7 @@ function mnca_search_custom_query( WP_Query $query ) {
 		$query->set( 'posts_per_page', 12 );
 		$query->set( 'post_status', 'publish' );
 
-		$tax_query = $query->get( 'tax_query', array() );
+		$tax_query             = $query->get( 'tax_query', array() );
 		$tax_query['relation'] = 'AND';
 
 		foreach ( get_taxonomies( array(), 'objects' ) as $tax ) {
@@ -114,8 +116,6 @@ function mnca_search_custom_query( WP_Query $query ) {
 
 			$query->set( 'meta_query', $meta_query );
 		}
-
-
 	}
 }
 
@@ -136,6 +136,10 @@ add_filter( 'posts_where', 'mnca_search_posts_where', 10, 2 );
 /**
  * Display the opening <form> tag of search form.
  *
+ * @see project://templates/tags/search-form-start.php
+ *
+ * @since 1.0.0
+ *
  * @param array{
  *                id: string,
  *                class: string,
@@ -144,8 +148,6 @@ add_filter( 'posts_where', 'mnca_search_posts_where', 10, 2 );
  *              } $args Optional.
  *
  * @return void
- * @see project://templates/tags/search-form-start.php
- * @since 1.0.0
  */
 function mnca_search_form_start( array $args = array() ) {
 	global $template_loader;
@@ -173,6 +175,8 @@ function mnca_search_form_start( array $args = array() ) {
 /**
  * Display a select list with taxonomy terms for search filtering.
  *
+ * @since 1.0.0
+ *
  * @param string $taxonomy Taxonomy key.
  * @param string|null $show_option_none Text to display for the default empty option where value is -1.
  * @param string|null $selected Option that should be selected.
@@ -181,7 +185,7 @@ function mnca_search_form_start( array $args = array() ) {
  *
  * @return void
  * @uses wp_dropdown_categories()
- * @since 1.0.0
+ *
  */
 function mnca_search_select_taxonomy(
 	string $taxonomy,
@@ -223,6 +227,11 @@ function mnca_search_select_taxonomy(
 /**
  * Display a select list of posts from specific post type for search filtering.
  *
+ * @uses wp_dropdown_pages()
+ * @uses \MNCA_WP\Walker\PageDropdown_Walker
+ *
+ * @since 1.0.0
+ *
  * @param string $post_type Post type key.
  * @param string|null $show_option_none Text to display for the default empty option where value is -1.
  * @param string|null $selected Option that should be selected.
@@ -230,9 +239,6 @@ function mnca_search_select_taxonomy(
  * @param string|null $class The HTML class attribute value of the select. Default is `form-select`.
  *
  * @return void
- * @uses wp_dropdown_pages()
- * @uses CRR_Search_Courses_Walker_PageDropdown
- * @since 1.0.0
  */
 function mnca_search_select_post_type(
 	string $post_type,
@@ -350,13 +356,15 @@ function mnca_search_alpha( array $args = array() ) {
 /**
  * Display an input type submit.
  *
+ * @see project://templates/tags/search-input-submit.php
+ *
+ * @since 1.0.0
+ *
  * @param array{
  *                value: string,
  *             } $args Optional.
  *
  * @return void
- * @see project://templates/tags/search-input-submit.php
- * @since 1.0.0
  */
 function mnca_search_input_submit( array $args = array() ) {
 	global $template_loader;
@@ -404,13 +412,15 @@ function mnca_search_reset( array $args = array() ) {
 /**
  * Display a hidden nonce field for security purposes.
  *
+ * @uses wp_nonce_field()
+ *
+ * @since 1.0.0
+ *
  * @param array{
  *                referer: boolean,
  *             } $args Optional.
  *
  * @return void
- * @uses wp_nonce_field()
- * @since 1.0.0
  */
 function mnca_search_hidden_nonce( array $args = array() ) {
 	$defaults = array(
@@ -428,9 +438,11 @@ function mnca_search_hidden_nonce( array $args = array() ) {
 /**
  * Display the ending <form> tag of search form with hidden nonce field.
  *
- * @return void
  * @see project://templates/tags/search-form-end.php
+ *
  * @since 1.0.0
+ *
+ * @return void
  */
 function mnca_search_form_end() {
 
