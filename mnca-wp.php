@@ -10,7 +10,7 @@
  * Plugin Name:       MNCA WP Framework
  * Plugin URI:        https://www.nicecotedazur.org
  * Description:       Help create WordPress websites for MNCA.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Requires at least: 6.1.0
  * Requires PHP:      7.4
  * Author:            MNCA
@@ -26,7 +26,7 @@ declare( strict_types=1 );
 defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 
 define( 'MNCA_WP', true );
-define( 'MNCA_WP_VERSION', '1.0.0' );
+define( 'MNCA_WP_VERSION', '1.1.0' );
 define( 'MNCA_WP_PATH', plugin_dir_path( __FILE__ ) );
 define( 'MNCA_WP_BASENAME', plugin_basename( __FILE__ ) );
 define( 'MNCA_WP_REL_PATH', dirname( MNCA_WP_BASENAME ) );
