@@ -398,7 +398,7 @@ function mnca_search_reset( array $args = array() ) {
 	global $template_loader;
 	$defaults = array(
 		'value' => __( 'Reset', 'mnca-wp' ),
-		'href'  => Request_Helper::get_current_page_url(),
+		'href'  => Request_Helper::get_current_page_url_no_paging(),
 	);
 	$args     = wp_parse_args( $args, $defaults );
 
