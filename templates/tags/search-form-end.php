@@ -23,7 +23,7 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 			event.preventDefault();
 
 			let form = event.target;
-			let formFields = form.querySelectorAll("select");
+			let formFields = form.querySelectorAll("select, input:not([type='submit'])");
 			let sendForm = false;
 			const formData = new FormData(form);
 			const urlParams = Array.from(new URLSearchParams(window.location.search));

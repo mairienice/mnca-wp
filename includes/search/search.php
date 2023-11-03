@@ -121,6 +121,18 @@ function mnca_search_custom_query( WP_Query $query ) {
 
 add_action( 'pre_get_posts', 'mnca_search_custom_query' );
 
+function mnca_search_posts_where( string $where, WP_Query $query ): string {
+	global $wpdb;
+
+	if ( $alpha = $query->get( '_alpha' ) ) {
+		$where .= " AND $wpdb->posts.post_title LIKE '$alpha%'";
+	}
+
+	return $where;
+}
+
+add_filter( 'posts_where', 'mnca_search_posts_where', 10, 2 );
+
 /**
  * Display the opening <form> tag of search form.
  *
@@ -304,6 +316,35 @@ function mnca_search_select_acf_relationship(
 			$args['class']
 		);
 	}
+}
+
+/**
+ * Display an alphabetical filter
+ *
+ * @see project://templates/tags/search-alpha.php
+ *
+ * @since 1.0.0
+ *
+ * @param array{
+ *                value: string,
+ *             } $args Optional.
+ *
+ * @return void
+ */
+function mnca_search_alpha( array $args = array() ) {
+	global $template_loader;
+	global $wp_query;
+
+	$defaults = array(
+		'value' => $wp_query->get( '_alpha', - 1 ),
+	);
+	$args     = wp_parse_args( $args, $defaults );
+
+	ob_start();
+
+	$template_loader->get_template_part( 'tags/search', 'alpha', true, $args );
+
+	echo ob_get_clean();
 }
 
 /**
