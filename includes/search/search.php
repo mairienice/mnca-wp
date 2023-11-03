@@ -373,6 +373,35 @@ function mnca_search_input_submit( array $args = array() ) {
 }
 
 /**
+ * Display a reset button.
+ *
+ * @see project://templates/tags/search-reset.php
+ *
+ * @since 1.0.0
+ *
+ * @param array{
+ *                value: string,
+ *                href: string
+ *             } $args Optional.
+ *
+ * @return void
+ */
+function mnca_search_reset( array $args = array() ) {
+	global $template_loader;
+	$defaults = array(
+		'value' => __( 'Reset', 'mnca-wp' ),
+		'href'  => Request_Helper::get_current_page_url(),
+	);
+	$args     = wp_parse_args( $args, $defaults );
+
+	ob_start();
+
+	$template_loader->get_template_part( 'tags/search', 'reset', true, $args );
+
+	echo ob_get_clean();
+}
+
+/**
  * Display a hidden nonce field for security purposes.
  *
  * @param array{
