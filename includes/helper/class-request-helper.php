@@ -55,6 +55,15 @@ class Request_Helper {
 		return home_url( add_query_arg( array(), $wp->request ) );
 	}
 
+	public static function get_current_page_url_no_paging(): ?string {
+		$current_url = self::get_current_page_url();
+
+		$position = strpos( $current_url , '/page' );
+		$no_paging_url = ( $position ) ? substr( $current_url, 0, $position ) : $current_url;
+
+		return trailingslashit( $no_paging_url );
+	}
+
 	/**
 	 * Retrieve the URL of the current pag with query strings.
 	 *
