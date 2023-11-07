@@ -227,9 +227,6 @@ function mnca_search_select_taxonomy(
 /**
  * Display a select list of posts from specific post type for search filtering.
  *
- * @uses wp_dropdown_pages()
- * @uses \MNCA_WP\Walker\PageDropdown_Walker
- *
  * @since 1.0.0
  *
  * @param string $post_type Post type key.
@@ -239,6 +236,9 @@ function mnca_search_select_taxonomy(
  * @param string|null $class The HTML class attribute value of the select. Default is `form-select`.
  *
  * @return void
+ * @uses wp_dropdown_pages()
+ * @uses \MNCA_WP\Walker\PageDropdown_Walker
+ *
  */
 function mnca_search_select_post_type(
 	string $post_type,
@@ -412,8 +412,6 @@ function mnca_search_reset( array $args = array() ) {
 /**
  * Display a hidden nonce field for security purposes.
  *
- * @uses wp_nonce_field()
- *
  * @since 1.0.0
  *
  * @param array{
@@ -421,6 +419,8 @@ function mnca_search_reset( array $args = array() ) {
  *             } $args Optional.
  *
  * @return void
+ * @uses wp_nonce_field()
+ *
  */
 function mnca_search_hidden_nonce( array $args = array() ) {
 	$defaults = array(
@@ -454,5 +454,24 @@ function mnca_search_form_end() {
 
 	echo ob_get_clean();
 
+}
+
+/**
+ * Check if a value is the current selected query_var value.
+ *
+ * @param string $query_var The name of the query_var.
+ * @param mixed $value The value wanted to test.
+ * @param mixed $on_success The returned value if the test is successful. True by default.
+ *
+ * @return bool|mixed The $on_success value on success. False otherwise.
+ */
+function mnca_search_selected( string $query_var, $value, $on_success = true ) {
+	global $wp_query;
+
+	if ( $wp_query->get( $query_var, false ) === $value ) {
+		return $on_success;
+	}
+
+	return false;
 }
 

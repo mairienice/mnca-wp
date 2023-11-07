@@ -21,7 +21,7 @@ extract( $args );
 
 <ul id="mnca-search-alpha">
 	<?php foreach ( range( 'A', 'Z' ) as $char ) : ?>
-		<li class="mnca-search-alpha__char">
+		<li class="mnca-search-alpha__char <?php echo mnca_search_selected( '_alpha', strtolower( $char ), 'selected' ); ?>">
 			<a class="mnca-search-alpha__link"
 			   href="#<?php echo $char ?>"><?php echo $char ?></a>
 		</li>
