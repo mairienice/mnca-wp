@@ -1,5 +1,3 @@
-# Copyright (C) 2023 MNCA
-# This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
 "Project-Id-Version: MNCA WP Framework 1.0.0\n"
@@ -11,6 +9,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2023-09-26T14:28:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language: \n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: mnca-wp\n"
 
@@ -31,6 +30,10 @@ msgstr "Aide à créer des sites WordPress pour MNCA"
 msgid "MNCA"
 msgstr "MNCA"
 
-#: includes/search/search.php:323
+#: includes/search/search.php:372
 msgid "Filtering"
 msgstr "Valider les filtres"
+
+#: includes/search/search.php:400
+msgid "Reset"
+msgstr "Réinitialiser"
