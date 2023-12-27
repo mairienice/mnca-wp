@@ -155,7 +155,7 @@ function mnca_search_form_start( array $args = array() ) {
 	$defaults = array(
 		'id'     => 'mnca-search',
 		'class'  => 'form--search',
-		'action' => Request_Helper::get_current_page_url(),
+		'action' => Request_Helper::get_current_page_url_no_paging(),
 		'method' => 'get',
 	);
 
