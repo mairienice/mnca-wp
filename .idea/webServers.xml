@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="25a2ef3f-5b07-437b-a969-8fd1e5abc93b" name="dev - dev.conservatoire-nice.org" url="https://dev.conservatoire-nice.org">
+        <fileTransfer rootFolder="/www/site/" host="46.18.194.24" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
